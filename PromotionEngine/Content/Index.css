@@ -2,6 +2,10 @@
     display:inline;
     margin-right:10px;
 }
+form span {
+    font-size:30px;
+    margin:20px;
+}
 h3 {
     margin-bottom:20px;
 }
@@ -13,4 +17,8 @@ button {
     display:block;
     margin:30px;
     flex-align:center;
+}
+
+#labelCost {
+     font-size:30px;
 }

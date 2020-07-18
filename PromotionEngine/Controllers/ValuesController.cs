@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PromotionEngine.Entity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -22,8 +23,10 @@ namespace PromotionEngine.Controllers
         }
 
         // POST api/values
-        public void Post([FromBody]string value)
+        public string Post([FromBody]Sku sku)
         {
+
+            return "30";
         }
 
         // PUT api/values/5
