@@ -55,14 +55,16 @@ namespace BusinessLayer
                         var costOfSku1 = skuIdCostMapping[sku.PromotionName[0].ToString()];
                         var costOfSku2 = skuIdCostMapping[sku.PromotionName[1].ToString()];
 
-                        var isSku1PriceGreaterThanSku2 = costOfSku1 > costOfSku2 ? true : false;
+                      //  var isSku1PriceGreaterThanSku2 = costOfSku1 > costOfSku2 ? true : false;
 
-                        var difference = isSku1PriceGreaterThanSku2 ? totalCountofSku1 - totalCountofSku2 : totalCountofSku2 - totalCountofSku1;
+                       // var difference = isSku1PriceGreaterThanSku2 ? totalCountofSku1 - totalCountofSku2 : totalCountofSku2 - totalCountofSku1;
+                        actualCost = actualCost - (totalCountofSku1 * skuIdCostMapping[sku.PromotionName[0].ToString()]);
+                        actualCost = actualCost - (totalCountofSku2 * skuIdCostMapping[sku.PromotionName[1].ToString()]);
+
+                        var difference =  totalCountofSku1 - totalCountofSku2;
+
                         if (difference == 0)
-                        {
-                            actualCost = actualCost - (totalCountofSku1 * skuIdCostMapping[sku.PromotionName[0].ToString()]);
-                            actualCost = actualCost - (totalCountofSku2 * skuIdCostMapping[sku.PromotionName[1].ToString()]);
-
+                        {                            
                             costAfterApplyingPromotion = appliedPromotionCost * totalCountofSku1;
                             actualCost = actualCost + costAfterApplyingPromotion;
 
@@ -70,10 +72,16 @@ namespace BusinessLayer
                         else if (difference > 0)
                         {
 
+                            costAfterApplyingPromotion = appliedPromotionCost * totalCountofSku2;
+                            costAfterApplyingPromotion = costAfterApplyingPromotion + (difference * costOfSku1);
+                            actualCost = actualCost + costAfterApplyingPromotion;
+
                         }
                         else if (difference < 0)
                         {
-
+                            costAfterApplyingPromotion = appliedPromotionCost * totalCountofSku1;
+                            costAfterApplyingPromotion = costAfterApplyingPromotion + (difference * costOfSku2);
+                            actualCost = actualCost + costAfterApplyingPromotion;
                         }
 
              }
@@ -97,11 +105,6 @@ namespace BusinessLayer
               }
 
             }
-
-
-
-
-
 
               float cost = actualCost;
 
