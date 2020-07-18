@@ -22,3 +22,8 @@ button {
 #labelCost {
      font-size:30px;
 }
+
+#labelErrorMessage {
+    font-size:30px;
+    color:red;
+}

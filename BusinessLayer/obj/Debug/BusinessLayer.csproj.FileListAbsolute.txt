@@ -1,0 +1,7 @@
+E:\PromotionEngine\BusinessLayer\bin\Debug\BusinessLayer.dll
+E:\PromotionEngine\BusinessLayer\bin\Debug\BusinessLayer.pdb
+E:\PromotionEngine\BusinessLayer\bin\Debug\Entities.dll
+E:\PromotionEngine\BusinessLayer\bin\Debug\Entities.pdb
+E:\PromotionEngine\BusinessLayer\obj\Debug\BusinessLayer.csprojResolveAssemblyReference.cache
+E:\PromotionEngine\BusinessLayer\obj\Debug\BusinessLayer.dll
+E:\PromotionEngine\BusinessLayer\obj\Debug\BusinessLayer.pdb

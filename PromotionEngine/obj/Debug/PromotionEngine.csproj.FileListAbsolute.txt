@@ -24,3 +24,7 @@ E:\PromotionEngine\PromotionEngine\bin\System.Web.WebPages.Razor.xml
 E:\PromotionEngine\PromotionEngine\obj\Debug\PromotionEngine.csprojResolveAssemblyReference.cache
 E:\PromotionEngine\PromotionEngine\obj\Debug\PromotionEngine.dll
 E:\PromotionEngine\PromotionEngine\obj\Debug\PromotionEngine.pdb
+E:\PromotionEngine\PromotionEngine\bin\BusinessLayer.dll
+E:\PromotionEngine\PromotionEngine\bin\Entities.dll
+E:\PromotionEngine\PromotionEngine\bin\BusinessLayer.pdb
+E:\PromotionEngine\PromotionEngine\bin\Entities.pdb

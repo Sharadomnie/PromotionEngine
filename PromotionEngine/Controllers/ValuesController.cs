@@ -1,4 +1,5 @@
-﻿using PromotionEngine.Entity;
+﻿using BusinessLayer;
+using PromotionEngine.Entity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,8 +26,11 @@ namespace PromotionEngine.Controllers
         // POST api/values
         public string Post([FromBody]Sku sku)
         {
+            Calculation calulation = new Calculation();
 
-            return "30";
+            var cost = calulation.GetCost(sku);
+
+            return cost;
         }
 
         // PUT api/values/5

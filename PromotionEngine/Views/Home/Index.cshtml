@@ -18,12 +18,13 @@
     </section>
     <section class="content-wrapper main-content clear-fix">
         <h3>Promotion Engine - Cost Calculator</h3>
+        <label id="labelErrorMessage">Please enter values in both the fields</label>
         <form>
             <label for="SkuIds">Enter the SKU Ids (eg:- A,B,C,D ...):</label>
-            <input type="text" id="SkuIds" name ="SkuIds" placeholder="Enter the SKU Ids"/>
+            <input type="text" id="SkuIds" name ="SkuIds" placeholder="Enter the SKU Ids" required/>
             <br />
             <label for="PromotionTypeName">Enter the promotion name:</label>
-            <input type="text" id="PromotionTypeName" name="PromotionTypeName" placeholder="Enter the promotion name" />
+            <input type="text" id="PromotionTypeName" name="PromotionTypeName" placeholder="Enter the promotion name" required />
 
             <button type="button" id="buttonCalculateCost"> Calculate Cost</button>
             <span>The Cost (Rs.) after applying the promotion is: </span><label id="labelCost"></label>

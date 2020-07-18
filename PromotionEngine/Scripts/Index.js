@@ -1,8 +1,15 @@
 ﻿$(document).ready(function () {
-    $("#buttonCalculateCost").click(function () {
+    $("#labelErrorMessage").hide();
+    $("#buttonCalculateCost").click(function (e) {
+
         var Sku = new Object();
         Sku.SkuIds = $.trim($('#SkuIds').val());
         Sku.PromotionName = $.trim($('#PromotionTypeName').val());
+
+        if (Sku.SkuIds == "" || Sku.PromotionName == "") {
+            $("#labelErrorMessage").show();
+            return false;
+        }
         $.ajax({
             url: 'http://localhost:1819/api/values/',
             type: 'POST',
@@ -11,7 +18,8 @@
             success: function (data) {
                 console.log(data);
                 $("#labelCost").text('');
-                $("#labelCost").text(data);              
+                $("#labelCost").text(data);
+                $("#labelErrorMessage").hide();
 
             },
             error: function (e) {
