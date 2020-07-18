@@ -7,6 +7,7 @@ using System.Web.Http;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PromotionEngine;
 using PromotionEngine.Controllers;
+using PromotionEngine.Entity;
 
 namespace PromotionEngine.Tests.Controllers
 {
@@ -48,11 +49,33 @@ namespace PromotionEngine.Tests.Controllers
             // Arrange
             ValuesController controller = new ValuesController();
 
+            Sku sku = new Sku();
+            sku.SkuIds = "A,A,A,A,A,A";
+            sku.PromotionName = "AAA";
             // Act
-            controller.Post("value");
+            string result = controller.Post(sku);
 
+            Assert.IsNotNull(result);
+            Assert.AreEqual("260", result);    
             // Assert
         }
+
+
+        [TestMethod]
+        [ExpectedException(typeof(KeyNotFoundException))]
+        public void PostNoPromotionName()
+        {
+            // Arrange
+            ValuesController controller = new ValuesController();
+
+            Sku sku = new Sku();
+            sku.SkuIds = "A,A,A,A,A,A";
+            sku.PromotionName = "";
+            // Act
+
+            controller.Post(sku);
+        }
+
 
         [TestMethod]
         public void Put()

@@ -14,50 +14,57 @@ namespace BusinessLayer
 
         public string GetCost(Sku sku)
         {
-
-            var selectedSkuIdCount = new Dictionary<string, int>();
-            var skuIdCostMapping = GetSkuIdCostMapping();
-
-            var promotionTypes = GetPromotionTypes();
-
-            var appliedPromotionCost = promotionTypes[sku.PromotionName];
-            var actualCost = 0.0f;
-            var skuIds = sku.SkuIds.Split(',');
-
-            var costAfterApplyingPromotion = 0.0f;
-            foreach (var skuId in skuIds)
+            try
             {
-                if (skuIdCostMapping.Keys.Contains(skuId))
+
+                var selectedSkuIdCount = new Dictionary<string, int>();
+                var skuIdCostMapping = GetSkuIdCostMapping();
+
+                var promotionTypes = GetPromotionTypes();
+
+                var appliedPromotionCost = promotionTypes[sku.PromotionName];
+                var actualCost = 0.0f;
+                var skuIds = sku.SkuIds.Split(',');
+
+                var costAfterApplyingPromotion = 0.0f;
+                foreach (var skuId in skuIds)
                 {
-                    actualCost = actualCost + skuIdCostMapping[skuId];
+                    if (skuIdCostMapping.Keys.Contains(skuId))
+                    {
+                        actualCost = actualCost + skuIdCostMapping[skuId];
+                    }
+
+                    if (selectedSkuIdCount.Keys.Contains(skuId))
+                    {
+                        selectedSkuIdCount[skuId] = selectedSkuIdCount[skuId] + 1;
+                    }
+                    else
+                    {
+                        selectedSkuIdCount.Add(skuId, 1);
+                    }
+
                 }
 
-                if (selectedSkuIdCount.Keys.Contains(skuId))
+
+                if (sku.PromotionName.Length == 2 && sku.PromotionName[0] != sku.PromotionName[1])
                 {
-                    selectedSkuIdCount[skuId] = selectedSkuIdCount[skuId] + 1;
+
+                    ApplyPromotionTypeCD(sku, selectedSkuIdCount, skuIdCostMapping, appliedPromotionCost, ref actualCost, ref costAfterApplyingPromotion);
                 }
                 else
                 {
-                    selectedSkuIdCount.Add(skuId, 1);
+                    ApplyPromotionTypeAAA(sku, selectedSkuIdCount, skuIdCostMapping, appliedPromotionCost, ref actualCost, ref costAfterApplyingPromotion);
+
                 }
 
+                float cost = actualCost;
+
+                return Convert.ToString(actualCost);
             }
-
-
-            if (sku.PromotionName.Length == 2 && sku.PromotionName[0] != sku.PromotionName[1])
+            catch (Exception ex)
             {
-
-                ApplyPromotionTypeCD(sku, selectedSkuIdCount, skuIdCostMapping, appliedPromotionCost, ref actualCost, ref costAfterApplyingPromotion);
+                throw;
             }
-            else
-            {
-                ApplyPromotionTypeAAA(sku, selectedSkuIdCount, skuIdCostMapping, appliedPromotionCost, ref actualCost, ref costAfterApplyingPromotion);
-
-            }
-
-            float cost = actualCost;
-
-            return Convert.ToString(actualCost);
         }
 
         private static void ApplyPromotionTypeAAA(Sku sku, Dictionary<string, int> selectedSkuIdCount, Dictionary<string, float> skuIdCostMapping, float appliedPromotionCost, ref float actualCost, ref float costAfterApplyingPromotion)

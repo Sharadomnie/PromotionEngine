@@ -26,11 +26,19 @@ namespace PromotionEngine.Controllers
         // POST api/values
         public string Post([FromBody]Sku sku)
         {
-            Calculation calulation = new Calculation();
+            var cost = "0";
+            try
+            {
+                Calculation calulation = new Calculation();
 
-            var cost = calulation.GetCost(sku);
-
-            return cost;
+                cost = calulation.GetCost(sku);
+                return cost;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            
         }
 
         // PUT api/values/5

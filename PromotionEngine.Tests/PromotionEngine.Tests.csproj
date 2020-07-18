@@ -103,6 +103,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Entities\Entities.csproj">
+      <Project>{a48ec1ec-c70b-4177-812b-0943b05091b8}</Project>
+      <Name>Entities</Name>
+    </ProjectReference>
     <ProjectReference Include="..\PromotionEngine\PromotionEngine.csproj">
       <Project>{F9348E06-3BA0-4181-8797-B267C3B429CA}</Project>
       <Name>PromotionEngine</Name>
