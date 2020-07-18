@@ -5,6 +5,7 @@
 form span {
     font-size:30px;
     margin:20px;
+    color:green;
 }
 h3 {
     margin-bottom:20px;
@@ -21,9 +22,10 @@ button {
 
 #labelCost {
      font-size:30px;
+     color:green;
 }
 
 #labelErrorMessage {
-    font-size:30px;
+    font-size:25px;
     color:red;
 }
