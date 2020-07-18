@@ -8,3 +8,9 @@ h3 {
 input {
     margin:10px;
 }
+
+button {
+    display:block;
+    margin:30px;
+    flex-align:center;
+}
